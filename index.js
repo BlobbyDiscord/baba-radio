@@ -11,14 +11,14 @@ const commands = {
 	"help": {
 		process: function (msg, suffix, embed) {
 			const list = ["```perl",
-			"br!help #Sends this help message",
-			"br!join #Join to your voice channel",
-			"br!leave #Exit the voice channel",
-			"br!play <rap/jazz/dubstep> #Play a specific radio",
-			"br!invite #Generate an invitation link to invite me to your server```",
-			"Hi! I'm **Baba Radio**, a simple bot focused on play music. I'm developed by `perronosaurio (Waxtz)#1767`"]
+			"fr!help #Sends this help message",
+			"fr!join #Join to your voice channel",
+			"fr!leave #Exit the voice channel",
+			"fr!play <flow> #Play radio station",
+			"fr!invite #Generate an invitation link to invite me to your server```",
+			"I'm **FLow Radio**, a simple bot focused on play music. I'm developed by `Icyz)#4569`"]
 			embed.setDescription(list);
-			embed.setAuthor("Command list!", "https://cdn.discordapp.com/attachments/330739726321713153/451061091322298378/jajajaxdxdxd.png");
+			embed.setAuthor("Command list!");
 			embed.setColor("#b92727");
 			msg.channel.send({ embed });
 		}
@@ -49,24 +49,24 @@ const commands = {
 			if (!msg.member.voiceChannel) return msg.channel.send('<:tick:445752370324832256> You are not on a voice channel.');
 			if (!msg.member.voiceChannel.joinable) return msg.channel.send("<:tick:445752370324832256> I\'m unable to play music in this channel.");
 			if (!suffix) {
-				embed.setDescription("• Insert a correct radio to play.\n\n`[-]` **Available radios:** `Rap, jazz & dubstep`");
+				embed.setDescription("• Insert a correct radio to play.\n\n`[-]` **Available radios:** `flow`");
 				embed.setColor("#b92727");
 				return msg.channel.send({ embed });
 			}
 			let radio; // Empty Variable
-			if (suffix.toLowerCase() == "rap") {
-				radio = "A-RAP-FM-WEB";
+			if (suffix.toLowerCase() == "flow") {
+				radio = "http://eu10.fastcast4u.com:3900/stream";
 			} else if (suffix.toLowerCase() == "jazz") {
 				radio = "WineFarmAndTouristradio";
 			} else if (suffix.toLowerCase() == "dubstep") {
 				radio = "ELECTROPOP-MUSIC";
 			} else {
-				embed.setDescription("• Insert a correct radio to play.\n\n`[-]` **Available radios:** `Rap, jazz & dubstep`");
+				embed.setDescription("• Insert a correct radio to play.\n\n`[-]` **Available radios:** `flow`");
 				embed.setColor("#b92727");
 				return msg.channel.send({ embed });
 			}
 			msg.member.voiceChannel.join().then(connection => {
-				require('http').get("http://streaming.radionomy.com/" + radio, (res) => {
+				require('http').get("" + radio, (res) => {
 					connection.playStream(res);
 					embed.setColor("#b92727");
 					embed.setDescription("<:tick2:445752599631888384> Playing correctly!");
@@ -77,7 +77,7 @@ const commands = {
 	},
 	"invite": {
 		process: function (msg, suffix) {
-			embed.setDescription("**Invite link:** `https://discordapp.com/oauth2/authorize?client_id=273463982625652737&scope=bot&permissions=314497");
+			embed.setDescription("**Invite link:** `https://discordapp.com/api/oauth2/authorize?client_id=596815382556442624&permissions=8&scope=bot");
       			embed.setColor("#b92727");
      			msg.channel.send({ embed });
 		}
