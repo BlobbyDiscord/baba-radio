@@ -1,4 +1,4 @@
 {
-  "token": "<your bot token>",
-  "prefix": "br!"
+  "token": proccess.env.TOKEN,
+  "prefix": "fr!"
 }
